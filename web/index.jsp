@@ -29,7 +29,12 @@
         val = $.trim(val);
         if (val != "") {
           var url = "${pageContext.request.contextPath}/valiateUserName";
+          //alert(url);  //valiateUserName 也就是 web.xml 需要配置响应的就是 valiateUserName
           var args = {"userName" : val, "time" : new Date()};
+          //通过远程的 http post 请求载入信息
+          //jQuery.post(url, [data], [callback], [type]):XMLHttpRequest
+          // callback 是发送成功时的回调函数
+          // type 的类型有 xml, html, script, json, text
           $.post(url, args, function (data) {
             $("#message").html(data)
           })
